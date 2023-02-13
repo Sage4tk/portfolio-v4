@@ -1,13 +1,13 @@
-import { initializeApp } from "firebase/app";
+import firebase from "firebase/compat/app";
 import { getAnalytics } from "firebase/analytics";
 import { firebaseConfig } from "./config";
 
 // firestore
-import "firebase/firestore";
+import "firebase/compat/firestore";
 
 // firebase variables
-export const app = initializeApp(firebaseConfig);
+export const app = firebase.initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
 
 
-export const _db = ""
+export const _db = firebase.firestore();
