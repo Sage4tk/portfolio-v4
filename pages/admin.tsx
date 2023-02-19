@@ -1,22 +1,20 @@
 import { NextPage } from "next"
+import { useEffect } from "react";
+import Login from "../components/admin/login";
 import { app } from "../config/firebase";
 
 const Admin:NextPage<any> = (props) => {
-    const signIn = async() => {
-        try {
-           const user = await app.auth().signInWithEmailAndPassword("","");
-
-           console.log(await user.user?.getIdToken());
-        } catch (err) {
-            console.log(err);
-
-        }
-    }
+    useEffect(() => {
+        const user = app.auth().onAuthStateChanged((data) => {
+            console.log(data);
+        });
+        
+        // disconnect user
+        return () => user();
+    }, [])
 
     return (
-        <div>
-            <button onClick={() => {signIn()}}>REGISTER</button>
-        </div>
+        <Login />
     )
 }
 
