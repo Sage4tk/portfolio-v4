@@ -45,25 +45,37 @@ const Login:React.FC = () => {
 
     }
 
+    // signout test button
+    const signout = async (callback:Function):Promise<void> => {
+        try {
+            
+            callback;
+        } catch (err) {
+            console.log("there was error on login");
+
+        }
+    }
+
     return (
-        <div>
-            <form onSubmit={login}>
-
-                <div>
-                    <label htmlFor="email">E-mail:</label>
-                    <input name="email" value={form.email} type="email" onChange={formListener} className="border" />
+        <div className="w-screen h-screen flex justify-center items-center">
+            <form onSubmit={login} className="shadow-xl rounded-lg px-6 py-7 w-[360px] border">
+                <div className="mb-4">
+                    <h1 className="text-xl">ADMIN PANEL</h1>
+                </div>
+                <div className="flex flex-col mb-2">
+                    <label htmlFor="email" className="mb-1">E-mail:</label>
+                    <input name="email" value={form.email} type="email" onChange={formListener} className="border px-4 py-2 rounded-2xl" />
                 </div>
 
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input name="password" autoComplete="" value={form.password} type="password"  onChange={formListener} className="border" />
+                <div className="flex flex-col mb-4">
+                    <label htmlFor="password" className="mb-1">Password:</label>
+                    <input name="password" autoComplete="" value={form.password} type="password"  onChange={formListener} className="border px-4 py-2 rounded-2xl" />
                 </div>
 
-                <div>
-                    <input type="submit" />
-                </div>
+                <input type="submit" value="login" className=" w-full bg-black text-white rounded-xl flex items-center justify-center py-2 hover:bg-slate-600" />
 
             </form>
+
         </div>
     )
 }
